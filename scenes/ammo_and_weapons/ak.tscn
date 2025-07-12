@@ -1,0 +1,46 @@
+[gd_scene load_steps=5 format=3 uid="uid://1ghqafpw2nv7"]
+
+[ext_resource type="Script" path="res://scripts/ammo_and_weapons/ak.gd" id="1_kl35r"]
+[ext_resource type="Texture2D" uid="uid://bxp6py2kvgcx6" path="res://assets/sprites/weapons/ak.png" id="2_npb0c"]
+[ext_resource type="AudioStream" uid="uid://dx7guxe46knqw" path="res://assets/sounds/shoot.wav" id="3_hb66o"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_kf43w"]
+properties/0/path = NodePath(".:visible")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:rotation")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath(".:position")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+properties/3/path = NodePath("Sprite2D:flip_v")
+properties/3/spawn = true
+properties/3/replication_mode = 1
+properties/4/path = NodePath("Sprite2D:flip_h")
+properties/4/spawn = true
+properties/4/replication_mode = 1
+properties/5/path = NodePath("shoot:playing")
+properties/5/spawn = true
+properties/5/replication_mode = 2
+
+[node name="Ak" type="Node2D"]
+script = ExtResource("1_kl35r")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(5, 5)
+texture = ExtResource("2_npb0c")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(21, -2)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_kf43w")
+
+[node name="shoot" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_hb66o")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

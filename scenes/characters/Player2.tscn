@@ -1,0 +1,178 @@
+[gd_scene load_steps=21 format=3 uid="uid://co13krptj8thn"]
+
+[ext_resource type="Script" path="res://scripts/player/Player.gd" id="1_am617"]
+[ext_resource type="PackedScene" uid="uid://dqlwrohgfiyde" path="res://scenes/Chain/Chain.tscn" id="2_jhh1e"]
+[ext_resource type="Texture2D" uid="uid://cbisbuvsvtb6t" path="res://assets/characters/player_2/idle.png" id="3_3cnw3"]
+[ext_resource type="Texture2D" uid="uid://b5p4jytxr1tp5" path="res://assets/characters/player_2/idle2.png" id="4_jkoth"]
+[ext_resource type="Texture2D" uid="uid://bibvwqeinv3an" path="res://assets/characters/player_2/idle3.png" id="5_rin46"]
+[ext_resource type="Texture2D" uid="uid://xa70yc40br6u" path="res://assets/characters/player_2/jump.png" id="6_jj250"]
+[ext_resource type="Texture2D" uid="uid://cwoedtqu8jcxv" path="res://assets/characters/player_2/jump_down.png" id="7_axjr4"]
+[ext_resource type="Texture2D" uid="uid://bdrfesdhykyui" path="res://assets/characters/player_2/jump_up.png" id="8_lbhys"]
+[ext_resource type="Texture2D" uid="uid://c0xpdlv36icqk" path="res://assets/characters/player_2/walk.png" id="9_fiquk"]
+[ext_resource type="Texture2D" uid="uid://bwis0tygypu2u" path="res://assets/characters/player_2/walk2.png" id="10_l38ko"]
+[ext_resource type="Texture2D" uid="uid://cpx3li0imhjgv" path="res://assets/characters/player_2/walk3.png" id="11_pgptp"]
+[ext_resource type="FontFile" uid="uid://dg4qr63hb1wss" path="res://PixelPurl.ttf" id="12_a71ty"]
+[ext_resource type="PackedScene" uid="uid://cjhvohmmfuteu" path="res://scenes/ammo_and_weapons/shotgun.tscn" id="12_d00oy"]
+[ext_resource type="PackedScene" uid="uid://1ghqafpw2nv7" path="res://scenes/ammo_and_weapons/ak.tscn" id="13_28fx4"]
+[ext_resource type="AudioStream" uid="uid://bgjoakyki5jha" path="res://assets/sounds/damage.wav" id="14_kw8uh"]
+[ext_resource type="PackedScene" uid="uid://bqtbnwok3lw0" path="res://scenes/ammo_and_weapons/revolver.tscn" id="15_owquo"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_u2t14"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_3cnw3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_jkoth")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_rin46")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_jkoth")
+}, {
+"duration": 25.0,
+"texture": ExtResource("3_3cnw3")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_jj250")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_axjr4")
+}],
+"loop": true,
+"name": &"jump down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_lbhys")
+}],
+"loop": true,
+"name": &"jump up",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_fiquk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_l38ko")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_pgptp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_l38ko")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 9.0
+}]
+
+[sub_resource type="RectangleShape2D" id="1"]
+size = Vector2(16, 74.0329)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2kgpi"]
+size = Vector2(20, 64)
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_o40iv"]
+properties/0/path = NodePath("Shotgun:rotation")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath("Shotgun:position")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath("Label:text")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+properties/3/path = NodePath("Shotgun:scale")
+properties/3/spawn = true
+properties/3/replication_mode = 1
+properties/4/path = NodePath("AnimatedSprite2D:flip_h")
+properties/4/spawn = true
+properties/4/replication_mode = 1
+properties/5/path = NodePath("AnimatedSprite2D:animation")
+properties/5/spawn = true
+properties/5/replication_mode = 1
+properties/6/path = NodePath("AnimatedSprite2D:frame")
+properties/6/spawn = true
+properties/6/replication_mode = 1
+properties/7/path = NodePath(".:position")
+properties/7/spawn = true
+properties/7/replication_mode = 1
+properties/8/path = NodePath(".:health")
+properties/8/spawn = true
+properties/8/replication_mode = 1
+
+[node name="Player" type="CharacterBody2D" groups=["player"]]
+collision_layer = 2
+collision_mask = 3
+script = ExtResource("1_am617")
+
+[node name="Chain" parent="." instance=ExtResource("2_jhh1e")]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -16)
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_u2t14")
+animation = &"idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -2.98353)
+shape = SubResource("1")
+
+[node name="hurtbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hurtbox"]
+position = Vector2(-2, 0)
+shape = SubResource("RectangleShape2D_2kgpi")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -96.0
+offset_top = -72.0
+offset_right = 96.0
+offset_bottom = -49.0
+theme_override_fonts/font = ExtResource("12_a71ty")
+theme_override_font_sizes/font_size = 25
+horizontal_alignment = 1
+autowrap_mode = 2
+justification_flags = 0
+visible_characters = 16
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_o40iv")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+
+[node name="Shotgun" parent="." instance=ExtResource("12_d00oy")]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(8, 34, -10, 34, -10, -1, -10, -13, -10, -46, 8, -46, 8, -18, 8, -1)
+
+[node name="Ak" parent="." instance=ExtResource("13_28fx4")]
+
+[node name="damage" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("14_kw8uh")
+
+[node name="revolver" parent="." instance=ExtResource("15_owquo")]
+
+[connection signal="area_entered" from="hurtbox" to="." method="_on_hurtbox_area_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

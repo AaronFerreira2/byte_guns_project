@@ -1,0 +1,266 @@
+[gd_scene load_steps=29 format=3 uid="uid://eorreaox0gfj"]
+
+[ext_resource type="Script" path="res://scenes/characters/custom_player.gd" id="1_w175h"]
+[ext_resource type="PackedScene" uid="uid://dqlwrohgfiyde" path="res://scenes/Chain/Chain.tscn" id="2_7p2vd"]
+[ext_resource type="Texture2D" uid="uid://cwlnu1jum2qhe" path="res://assets/characters/player_6/idle.png" id="3_1xjvv"]
+[ext_resource type="Texture2D" uid="uid://bdsx152a4vfgi" path="res://assets/characters/player_6/idle2.png" id="4_g5knp"]
+[ext_resource type="Texture2D" uid="uid://e4sd6ld510xr" path="res://assets/characters/player_6/jump.png" id="5_ivlxe"]
+[ext_resource type="Texture2D" uid="uid://s3ssbd5rp5f4" path="res://assets/characters/player_6/jump_down.png" id="6_fqsrd"]
+[ext_resource type="Texture2D" uid="uid://c6ggwdphufk1u" path="res://assets/characters/player_6/jump_up.png" id="7_t7qjk"]
+[ext_resource type="Texture2D" uid="uid://nydl1w4yadrc" path="res://assets/characters/player_6/walk.png" id="8_pb8bc"]
+[ext_resource type="Texture2D" uid="uid://dh67qtt2sjnq3" path="res://assets/characters/player_6/walk2.png" id="9_6un82"]
+[ext_resource type="Texture2D" uid="uid://cc5rn2j6umjsy" path="res://assets/characters/player_6/walk3.png" id="10_aaj44"]
+[ext_resource type="Texture2D" uid="uid://rrfo87b2x7cx" path="res://assets/characters/player_6/second_color/idle.png" id="11_ef3m0"]
+[ext_resource type="PackedScene" uid="uid://cjhvohmmfuteu" path="res://scenes/ammo_and_weapons/shotgun.tscn" id="11_g7msy"]
+[ext_resource type="Texture2D" uid="uid://cog57ax4m0mav" path="res://assets/characters/player_6/second_color/idle3.png" id="12_hb5yy"]
+[ext_resource type="PackedScene" uid="uid://1ghqafpw2nv7" path="res://scenes/ammo_and_weapons/ak.tscn" id="12_nknyf"]
+[ext_resource type="Texture2D" uid="uid://yqyxq7lb0360" path="res://assets/characters/player_6/second_color/jump_down.png" id="13_2w6hy"]
+[ext_resource type="AudioStream" uid="uid://bgjoakyki5jha" path="res://assets/sounds/damage.wav" id="13_rvfak"]
+[ext_resource type="Texture2D" uid="uid://okryys6s1w88" path="res://assets/characters/player_6/second_color/jump_up.png" id="14_g6h4n"]
+[ext_resource type="PackedScene" uid="uid://bqtbnwok3lw0" path="res://scenes/ammo_and_weapons/revolver.tscn" id="14_j2veo"]
+[ext_resource type="Texture2D" uid="uid://chg672ivg0hxt" path="res://assets/characters/player_6/second_color/jump.png" id="15_61yfg"]
+[ext_resource type="Texture2D" uid="uid://du8xglnusmlel" path="res://assets/characters/player_6/second_color/walk.png" id="15_yerm1"]
+[ext_resource type="Texture2D" uid="uid://c6pey3ngxfn5d" path="res://assets/characters/player_6/second_color/walk2.png" id="16_c2kic"]
+[ext_resource type="Texture2D" uid="uid://6cyoqovln7a6" path="res://assets/characters/player_6/second_color/walk3.png" id="17_xrler"]
+[ext_resource type="FontFile" uid="uid://dg4qr63hb1wss" path="res://PixelPurl.ttf" id="19_s2if4"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_u2t14"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_1xjvv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_g5knp")
+}, {
+"duration": 25.0,
+"texture": ExtResource("3_1xjvv")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_ivlxe")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_fqsrd")
+}],
+"loop": true,
+"name": &"jump down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_t7qjk")
+}],
+"loop": true,
+"name": &"jump up",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_pb8bc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_6un82")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_aaj44")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_6un82")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 9.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qamhk"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_ef3m0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_hb5yy")
+}, {
+"duration": 25.0,
+"texture": ExtResource("11_ef3m0")
+}],
+"loop": true,
+"name": &"idle2",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_2w6hy")
+}],
+"loop": true,
+"name": &"jump down2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_g6h4n")
+}],
+"loop": true,
+"name": &"jump up2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_61yfg")
+}],
+"loop": true,
+"name": &"jump2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_yerm1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_c2kic")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_xrler")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_c2kic")
+}],
+"loop": true,
+"name": &"walk2",
+"speed": 9.0
+}]
+
+[sub_resource type="RectangleShape2D" id="1"]
+size = Vector2(16, 74.0329)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2kgpi"]
+size = Vector2(20, 64)
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_o40iv"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath("Shotgun:rotation")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath("Shotgun:position")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+properties/3/path = NodePath("Label:text")
+properties/3/spawn = true
+properties/3/replication_mode = 1
+properties/4/path = NodePath("Shotgun:scale")
+properties/4/spawn = true
+properties/4/replication_mode = 1
+properties/5/path = NodePath("AnimatedSprite2D:flip_h")
+properties/5/spawn = true
+properties/5/replication_mode = 1
+properties/6/path = NodePath("AnimatedSprite2D:animation")
+properties/6/spawn = true
+properties/6/replication_mode = 1
+properties/7/path = NodePath("AnimatedSprite2D:frame")
+properties/7/spawn = true
+properties/7/replication_mode = 1
+properties/8/path = NodePath(".:health")
+properties/8/spawn = true
+properties/8/replication_mode = 1
+properties/9/path = NodePath("AnimatedSprite2D:visible")
+properties/9/spawn = true
+properties/9/replication_mode = 1
+properties/10/path = NodePath("AnimatedSprite2D2:visible")
+properties/10/spawn = true
+properties/10/replication_mode = 1
+properties/11/path = NodePath("AnimatedSprite2D2:animation")
+properties/11/spawn = true
+properties/11/replication_mode = 1
+properties/12/path = NodePath("AnimatedSprite2D2:frame")
+properties/12/spawn = true
+properties/12/replication_mode = 1
+properties/13/path = NodePath("AnimatedSprite2D2:flip_h")
+properties/13/spawn = true
+properties/13/replication_mode = 1
+
+[node name="Player" type="CharacterBody2D" groups=["player"]]
+collision_layer = 2
+collision_mask = 3
+script = ExtResource("1_w175h")
+
+[node name="Chain" parent="." instance=ExtResource("2_7p2vd")]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -16)
+rotation = -0.00368696
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_u2t14")
+animation = &"walk"
+frame = 2
+frame_progress = 0.475415
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -16)
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_qamhk")
+animation = &"jump2"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -2.98353)
+shape = SubResource("1")
+
+[node name="hurtbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hurtbox"]
+position = Vector2(-2, 0)
+shape = SubResource("RectangleShape2D_2kgpi")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -96.0
+offset_top = -72.0
+offset_right = 96.0
+offset_bottom = -49.0
+theme_override_fonts/font = ExtResource("19_s2if4")
+theme_override_font_sizes/font_size = 25
+horizontal_alignment = 1
+autowrap_mode = 2
+justification_flags = 0
+visible_characters = 16
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_o40iv")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+
+[node name="Shotgun" parent="." instance=ExtResource("11_g7msy")]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(8, 34, -10, 34, -10, -1, -10, -13, -10, -46, 8, -46, 8, -18, 8, -1)
+
+[node name="Ak" parent="." instance=ExtResource("12_nknyf")]
+
+[node name="damage" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("13_rvfak")
+
+[node name="revolver" parent="." instance=ExtResource("14_j2veo")]
+
+[connection signal="area_entered" from="hurtbox" to="." method="_on_hurtbox_area_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

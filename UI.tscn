@@ -1,0 +1,128 @@
+[gd_scene load_steps=8 format=3 uid="uid://gria2c4dfys7"]
+
+[ext_resource type="Script" path="res://scripts/canvas_layer.gd" id="1_3tuo1"]
+[ext_resource type="PackedScene" uid="uid://bvgjkk827fwbk" path="res://scenes/characters/Player.tscn" id="2_fw6id"]
+[ext_resource type="FontFile" uid="uid://dg4qr63hb1wss" path="res://PixelPurl.ttf" id="2_hcnlg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tp52v"]
+bg_color = Color(0.829085, 0, 0.0988186, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x5df7"]
+bg_color = Color(1, 0, 0, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.542045, 0, 0.0694215, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gu0yv"]
+bg_color = Color(2.37646e-07, 0.258539, 0.0191226, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jqry5"]
+bg_color = Color(0, 0.67451, 0.105882, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.272068, 0.500141, 0, 1)
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_3tuo1")
+jogador = ExtResource("2_fw6id")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 64.0
+offset_top = -72.0
+offset_right = 250.0
+offset_bottom = -47.0
+grow_vertical = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="health_bar" type="ProgressBar" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(250, 25)
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_styles/background = SubResource("StyleBoxFlat_tp52v")
+theme_override_styles/fill = SubResource("StyleBoxFlat_x5df7")
+max_value = 15.0
+allow_lesser = true
+show_percentage = false
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/health_bar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -7.0
+offset_right = 16.0
+offset_bottom = 7.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("2_hcnlg")
+text = "Health"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="."]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -312.0
+offset_top = -88.0
+offset_right = -62.0
+offset_bottom = -48.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer2"]
+layout_mode = 2
+
+[node name="bullets" type="ProgressBar" parent="MarginContainer2/HBoxContainer"]
+custom_minimum_size = Vector2(250, 25)
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_styles/background = SubResource("StyleBoxFlat_gu0yv")
+theme_override_styles/fill = SubResource("StyleBoxFlat_jqry5")
+max_value = 30.0
+show_percentage = false
+
+[node name="Label2" type="Label" parent="MarginContainer2/HBoxContainer/bullets"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -228.0
+offset_top = -24.0
+offset_right = -20.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("2_hcnlg")
+text = "Bullets"
+horizontal_alignment = 1
+vertical_alignment = 1

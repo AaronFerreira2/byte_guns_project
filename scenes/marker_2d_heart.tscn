@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://dhdjt53alm0w2"]
+
+[ext_resource type="PackedScene" uid="uid://dh53qu5yprsfj" path="res://scenes/heart.tscn" id="2_g2dd1"]
+
+[sub_resource type="GDScript" id="GDScript_0q0oq"]
+script/source = "extends Marker2D
+
+@onready var timerHeart = $Timer
+@export var heart: PackedScene
+# Called when the node enters the scene tree for the first time.
+
+
+
+func _on_timer_timeout() -> void:
+	var novaHeart = heart.instantiate()
+	add_child(novaHeart)
+	timerHeart.stop()
+"
+
+[node name="Marker2D" type="Marker2D"]
+script = SubResource("GDScript_0q0oq")
+heart = ExtResource("2_g2dd1")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

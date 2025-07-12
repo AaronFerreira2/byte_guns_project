@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://jeshpoqqy6ht"]
+
+[ext_resource type="Script" path="res://scripts/marker_2d.gd" id="1_slrys"]
+[ext_resource type="PackedScene" uid="uid://bdki2ghitlbqu" path="res://scenes/ammo_and_weapons/ammunition.tscn" id="2_2bo70"]
+
+[node name="Marker2D" type="Marker2D"]
+script = ExtResource("1_slrys")
+municao = ExtResource("2_2bo70")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

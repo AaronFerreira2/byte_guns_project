@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://dh53qu5yprsfj"]
+
+[ext_resource type="Script" path="res://scripts/heart.gd" id="1_qs38a"]
+[ext_resource type="Texture2D" uid="uid://dfufq6foqdwe2" path="res://assets/sprites/heart.png" id="2_b50ue"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dntx3"]
+size = Vector2(16, 20)
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_2hmfu"]
+properties/0/path = NodePath("Sprite2D:visible")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath("CollisionShape2D:visible")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath(".:disable_mode")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+properties/3/path = NodePath(".:process_mode")
+properties/3/spawn = true
+properties/3/replication_mode = 1
+
+[node name="heart" type="Area2D"]
+script = ExtResource("1_qs38a")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(5, 5)
+texture = ExtResource("2_b50ue")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_dntx3")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_2hmfu")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,0 +1,1264 @@
+[gd_scene load_steps=66 format=3 uid="uid://dncaf77j1qyp3"]
+
+[ext_resource type="Script" path="res://scenes/menu.gd" id="1_rob4n"]
+[ext_resource type="Texture2D" uid="uid://c5qfia2302lp7" path="res://assets/sprites/Host_button.png" id="2_52lo6"]
+[ext_resource type="FontFile" uid="uid://dg4qr63hb1wss" path="res://PixelPurl.ttf" id="2_7078j"]
+[ext_resource type="Script" path="res://scripts/option_button.gd" id="2_ad8g6"]
+[ext_resource type="Texture2D" uid="uid://gp7eov71khea" path="res://assets/sprites/menutexture.png" id="2_isqr8"]
+[ext_resource type="Shader" path="res://menubackground.gdshader" id="2_lywa2"]
+[ext_resource type="Script" path="res://scripts/multiplayer_spawner.gd" id="3_mq7g8"]
+[ext_resource type="PackedScene" uid="uid://gria2c4dfys7" path="res://UI.tscn" id="4_7wdc5"]
+[ext_resource type="Texture2D" uid="uid://bjvv0pyg04aly" path="res://assets/sprites/border.png" id="6_menxl"]
+[ext_resource type="AudioStream" uid="uid://cvh3gr5vn66qm" path="res://assets/sounds/character_button_sound.wav" id="7_3u7yx"]
+[ext_resource type="Texture2D" uid="uid://d0jd347v8cvy2" path="res://icons/toji5.png" id="7_83uao"]
+[ext_resource type="Texture2D" uid="uid://c6cxab71qwrdj" path="res://assets/sprites/border_background.png" id="7_c8r4x"]
+[ext_resource type="Texture2D" uid="uid://cfnk4wtj46eiv" path="res://icons/gojo2.png" id="7_pns2d"]
+[ext_resource type="AudioStream" uid="uid://8vu2s1bo2yg" path="res://assets/sounds/character_selected.wav" id="8_r2w16"]
+[ext_resource type="Texture2D" uid="uid://csfeviuqndsht" path="res://assets/sprites/Join_button.png" id="9_ev7cn"]
+[ext_resource type="Texture2D" uid="uid://bw2d324xjq6nn" path="res://assets/sprites/interface3.png" id="10_6q0pp"]
+[ext_resource type="Texture2D" uid="uid://bvv8pkue3s8xj" path="res://icons/deadpool2.png" id="10_hs8st"]
+[ext_resource type="Texture2D" uid="uid://5y53pur1gkm0" path="res://icons/asuka4.png" id="10_ja6xs"]
+[ext_resource type="AudioStream" uid="uid://owkpxi7tql2y" path="res://menusong.wav" id="12_buk7h"]
+[ext_resource type="Texture2D" uid="uid://cjbpg6xxk6yt3" path="res://icons/tankman2.png" id="12_gdknw"]
+[ext_resource type="Texture2D" uid="uid://dy36knrd4fqxx" path="res://assets/sprites/interface2.png" id="12_peb2w"]
+[ext_resource type="Texture2D" uid="uid://dvaevhhqt7exo" path="res://icons/space_soldier2.png" id="13_jjnfw"]
+[ext_resource type="Texture2D" uid="uid://cn73oget1fa8" path="res://icons/alien3.png" id="14_pfr87"]
+[ext_resource type="Texture2D" uid="uid://cg0c3a5q832sy" path="res://assets/sprites/background3.png" id="16_28v6c"]
+[ext_resource type="Texture2D" uid="uid://bxstcprjx2daf" path="res://assets/sprites/background2.png" id="16_v5gqr"]
+
+[sub_resource type="Gradient" id="Gradient_tr656"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(0.176419, 0.176419, 0.176419, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_7bwg0"]
+gradient = SubResource("Gradient_tr656")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_be67d"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dd07q"]
+shader = ExtResource("2_lywa2")
+shader_parameter/speed = 0.1
+shader_parameter/max_speed = 0.2
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_hy8ju"]
+properties/0/path = NodePath("..:level_name")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cfhr4"]
+content_margin_left = 29.0
+bg_color = Color(0.298039, 0.298039, 0.298039, 0.494118)
+border_width_left = 11
+border_width_top = 11
+border_width_right = 11
+border_width_bottom = 11
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_fmtuq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TextureRect3:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_jm3a6"]
+resource_name = "selected"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667, 0.2, 0.233333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 0.933033),
+"update": 1,
+"values": [true, true, false, false, true, true, false, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TextureRect3:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.233333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0e6oq"]
+_data = {
+"RESET": SubResource("Animation_fmtuq"),
+"selected": SubResource("Animation_jm3a6")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ys02p"]
+bg_color = Color(0.19, 0.19, 0.19, 1)
+draw_center = false
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_np8q4"]
+texture = ExtResource("2_52lo6")
+modulate_color = Color(0.447059, 0.447059, 0.447059, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kboxc"]
+texture = ExtResource("2_52lo6")
+modulate_color = Color(0.352941, 0.352941, 0.352941, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8geyf"]
+texture = ExtResource("2_52lo6")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_f5c0n"]
+texture = ExtResource("9_ev7cn")
+modulate_color = Color(0.447059, 0.447059, 0.447059, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_h02p0"]
+texture = ExtResource("9_ev7cn")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5io3h"]
+texture = ExtResource("9_ev7cn")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_64s6y"]
+texture = ExtResource("10_6q0pp")
+modulate_color = Color(0.354063, 0.354063, 0.354063, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_q7h6x"]
+texture = ExtResource("10_6q0pp")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hq0tc"]
+texture = ExtResource("10_6q0pp")
+modulate_color = Color(0.352941, 0.352941, 0.352941, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cueyo"]
+texture = ExtResource("10_6q0pp")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6vwy2"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 15
+border_width_top = 15
+border_width_right = 15
+border_width_bottom = 15
+border_color = Color(1, 1, 1, 1)
+expand_margin_left = 5.0
+expand_margin_top = 5.0
+expand_margin_right = 5.0
+expand_margin_bottom = 5.0
+anti_aliasing = false
+
+[sub_resource type="Theme" id="Theme_a4jbu"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bmrna"]
+texture = ExtResource("12_peb2w")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yyl2o"]
+texture = ExtResource("12_peb2w")
+modulate_color = Color(0.352941, 0.352941, 0.352941, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_w86gv"]
+texture = ExtResource("12_peb2w")
+modulate_color = Color(0.447059, 0.447059, 0.447059, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_djdhv"]
+texture = ExtResource("12_peb2w")
+modulate_color = Color(0.352941, 0.352941, 0.352941, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_f1gl1"]
+texture = ExtResource("12_peb2w")
+
+[sub_resource type="ImageTexture" id="ImageTexture_07ghj"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_p11p4"]
+texture = ExtResource("12_peb2w")
+modulate_color = Color(0.447059, 0.447059, 0.447059, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vipqt"]
+texture = ExtResource("12_peb2w")
+modulate_color = Color(0.352941, 0.352941, 0.352941, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_605of"]
+texture = ExtResource("12_peb2w")
+
+[sub_resource type="Environment" id="Environment_2rrmy"]
+background_mode = 3
+glow_enabled = true
+glow_bloom = 0.5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fhmww"]
+content_margin_left = 29.0
+bg_color = Color(0.298039, 0.298039, 0.298039, 0.494118)
+border_width_left = 11
+border_width_top = 11
+border_width_right = 11
+border_width_bottom = 11
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fjw2v"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_a3pm1"]
+texture = ExtResource("12_peb2w")
+modulate_color = Color(0.447059, 0.447059, 0.447059, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_m6fxg"]
+texture = ExtResource("12_peb2w")
+modulate_color = Color(0.352941, 0.352941, 0.352941, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_goo8o"]
+texture = ExtResource("12_peb2w")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_clej5"]
+texture = ExtResource("12_peb2w")
+modulate_color = Color(0.447059, 0.447059, 0.447059, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ja8dg"]
+texture = ExtResource("12_peb2w")
+modulate_color = Color(0.352941, 0.352941, 0.352941, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6g1sn"]
+texture = ExtResource("12_peb2w")
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1112.0
+offset_bottom = -608.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_rob4n")
+
+[node name="MarginContainer4" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1112.0
+offset_bottom = 608.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="background" type="TextureRect" parent="MarginContainer4"]
+layout_mode = 2
+texture = SubResource("GradientTexture2D_7bwg0")
+
+[node name="Background" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 191.0
+offset_bottom = 90.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(5, 5)
+
+[node name="ColorRect" type="ColorRect" parent="Background"]
+material = SubResource("ShaderMaterial_be67d")
+layout_mode = 2
+color = Color(0, 0, 0, 0.572549)
+
+[node name="TextureRect" type="TextureRect" parent="Background"]
+modulate = Color(2.28621e-07, 0.323274, 0.0861717, 0.454902)
+texture_repeat = 2
+material = SubResource("ShaderMaterial_dd07q")
+layout_mode = 2
+texture = ExtResource("2_isqr8")
+stretch_mode = 1
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("res://scenes/characters/Player2.tscn", "res://scenes/characters/Player.tscn", "res://scenes/characters/Player3.tscn", "res://scenes/characters/Player4.tscn", "res://scenes/characters/Player5.tscn", "res://scenes/characters/Player6.tscn", "res://scenes/characters/Player7.tscn")
+spawn_path = NodePath("..")
+script = ExtResource("3_mq7g8")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+root_path = NodePath("../MultiplayerSpawner")
+replication_config = SubResource("SceneReplicationConfig_hy8ju")
+
+[node name="CanvasLayer" parent="." instance=ExtResource("4_7wdc5")]
+visible = false
+
+[node name="MarginContainer3" type="MarginContainer" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -376.0
+offset_top = -250.0
+offset_right = 376.0
+offset_bottom = 250.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer3"]
+layout_mode = 2
+
+[node name="Leaderboard2" type="TextEdit" parent="CanvasLayer/MarginContainer3/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(752, 500)
+layout_mode = 2
+focus_mode = 0
+theme_override_fonts/font = ExtResource("2_7078j")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_cfhr4")
+editable = false
+context_menu_enabled = false
+shortcut_keys_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+virtual_keyboard_enabled = false
+middle_mouse_paste_enabled = false
+
+[node name="Label3" type="Label" parent="CanvasLayer/MarginContainer3/VBoxContainer/Leaderboard2"]
+layout_mode = 0
+offset_left = 328.0
+offset_top = 40.0
+offset_right = 444.0
+offset_bottom = 62.0
+theme_override_fonts/font = ExtResource("2_7078j")
+theme_override_font_sizes/font_size = 25
+text = "LEADERBOARD"
+
+[node name="Label4" type="Label" parent="CanvasLayer/MarginContainer3/VBoxContainer/Leaderboard2"]
+layout_mode = 0
+offset_left = 192.0
+offset_top = 80.0
+offset_right = 580.0
+offset_bottom = 102.0
+theme_override_fonts/font = ExtResource("2_7078j")
+theme_override_font_sizes/font_size = 25
+text = "NAME       -       KILLS       -       DEATHS"
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+visible = false
+offset_left = 928.0
+offset_top = 32.0
+offset_right = 968.0
+offset_bottom = 55.0
+text = "Player -->"
+
+[node name="Label2" type="Label" parent="CanvasLayer"]
+visible = false
+offset_left = 1024.0
+offset_top = 32.0
+offset_right = 1096.0
+offset_bottom = 55.0
+text = "Player(vitima)"
+
+[node name="MarginContainer4" type="MarginContainer" parent="CanvasLayer"]
+visible = false
+custom_minimum_size = Vector2(210, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -112.0
+offset_top = -324.0
+offset_right = 98.0
+offset_bottom = -220.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextEdit" type="TextEdit" parent="CanvasLayer/MarginContainer4"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_7078j")
+theme_override_font_sizes/font_size = 32
+text = "      ∞ : ∞
+     Time left"
+editable = false
+context_menu_enabled = false
+shortcut_keys_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+virtual_keyboard_enabled = false
+middle_mouse_paste_enabled = false
+scroll_fit_content_height = true
+text_direction = 1
+
+[node name="MarginContainer5" type="MarginContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="characters" type="Control" parent="MarginContainer5"]
+layout_mode = 2
+
+[node name="toji" type="Control" parent="MarginContainer5/characters"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="background" type="TextureRect" parent="MarginContainer5/characters/toji"]
+layout_mode = 0
+offset_left = 827.0
+offset_top = 20.0
+offset_right = 859.0
+offset_bottom = 52.0
+scale = Vector2(3, 3)
+texture = ExtResource("7_c8r4x")
+
+[node name="toji2" type="TextureRect" parent="MarginContainer5/characters/toji"]
+layout_mode = 0
+offset_left = 827.0
+offset_top = 20.0001
+offset_right = 859.0
+offset_bottom = 52.0001
+scale = Vector2(3, 3)
+texture = ExtResource("7_83uao")
+
+[node name="toji" type="TextureRect" parent="MarginContainer5/characters/toji"]
+layout_mode = 0
+offset_left = 827.0
+offset_top = 20.0001
+offset_right = 859.0
+offset_bottom = 52.0001
+scale = Vector2(3, 3)
+texture = ExtResource("6_menxl")
+
+[node name="Label" type="Label" parent="MarginContainer5/characters/toji"]
+layout_mode = 0
+offset_left = 827.0
+offset_top = 5.0
+offset_right = 923.0
+offset_bottom = 19.0
+theme_override_fonts/font = ExtResource("2_7078j")
+theme_override_font_sizes/font_size = 16
+text = "Toji"
+horizontal_alignment = 1
+
+[node name="Button7" type="Button" parent="MarginContainer5/characters/toji"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 827.0
+offset_top = 20.0
+offset_right = 923.0
+offset_bottom = 117.0
+text = "Toji"
+
+[node name="asuka" type="Control" parent="MarginContainer5/characters"]
+anchors_preset = 0
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+
+[node name="background" type="TextureRect" parent="MarginContainer5/characters/asuka"]
+layout_mode = 0
+offset_left = 208.0
+offset_top = 310.0
+offset_right = 240.0
+offset_bottom = 342.0
+scale = Vector2(3, 3)
+texture = ExtResource("7_c8r4x")
+
+[node name="asuka2" type="TextureRect" parent="MarginContainer5/characters/asuka"]
+layout_mode = 0
+offset_left = 208.0
+offset_top = 310.0
+offset_right = 240.0
+offset_bottom = 342.0
+scale = Vector2(3, 3)
+texture = ExtResource("10_ja6xs")
+
+[node name="asuka" type="TextureRect" parent="MarginContainer5/characters/asuka"]
+layout_mode = 0
+offset_left = 208.0
+offset_top = 310.0
+offset_right = 240.0
+offset_bottom = 342.0
+scale = Vector2(3, 3)
+texture = ExtResource("6_menxl")
+
+[node name="Label" type="Label" parent="MarginContainer5/characters/asuka"]
+layout_mode = 0
+offset_left = 208.0
+offset_top = 295.0
+offset_right = 304.0
+offset_bottom = 309.0
+theme_override_fonts/font = ExtResource("2_7078j")
+theme_override_font_sizes/font_size = 16
+text = "Asuka"
+horizontal_alignment = 1
+
+[node name="Button6" type="Button" parent="MarginContainer5/characters/asuka"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 208.0
+offset_top = 310.0
+offset_right = 304.0
+offset_bottom = 406.0
+text = "Asuka"
+
+[node name="deadpool" type="Control" parent="MarginContainer5/characters"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="background" type="TextureRect" parent="MarginContainer5/characters/deadpool"]
+layout_mode = 0
+offset_left = 508.0
+offset_top = 290.0
+offset_right = 540.0
+offset_bottom = 322.0
+scale = Vector2(3, 3)
+texture = ExtResource("7_c8r4x")
+
+[node name="deadpool2" type="TextureRect" parent="MarginContainer5/characters/deadpool"]
+layout_mode = 0
+offset_left = 508.0
+offset_top = 290.0
+offset_right = 540.0
+offset_bottom = 322.0
+scale = Vector2(3, 3)
+texture = ExtResource("10_hs8st")
+
+[node name="deadpool" type="TextureRect" parent="MarginContainer5/characters/deadpool"]
+layout_mode = 0
+offset_left = 508.0
+offset_top = 290.0
+offset_right = 540.0
+offset_bottom = 322.0
+scale = Vector2(3, 3)
+texture = ExtResource("6_menxl")
+
+[node name="Label" type="Label" parent="MarginContainer5/characters/deadpool"]
+layout_mode = 0
+offset_left = 508.0
+offset_top = 275.0
+offset_right = 604.0
+offset_bottom = 289.0
+theme_override_fonts/font = ExtResource("2_7078j")
+theme_override_font_sizes/font_size = 16
+text = "Deadpool"
+horizontal_alignment = 1
+
+[node name="Button5" type="Button" parent="MarginContainer5/characters/deadpool"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 508.0
+offset_top = 290.0
+offset_right = 604.0
+offset_bottom = 386.0
+text = "Deadpool"
+
+[node name="gojo" type="Control" parent="MarginContainer5/characters"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="background" type="TextureRect" parent="MarginContainer5/characters/gojo"]
+layout_mode = 0
+offset_left = 508.0
+offset_top = 155.0
+offset_right = 540.0
+offset_bottom = 187.0
+scale = Vector2(3, 3)
+texture = ExtResource("7_c8r4x")
+
+[node name="gojo2" type="TextureRect" parent="MarginContainer5/characters/gojo"]
+layout_mode = 0
+offset_left = 508.0
+offset_top = 155.0
+offset_right = 540.0
+offset_bottom = 187.0
+scale = Vector2(3, 3)
+texture = ExtResource("7_pns2d")
+
+[node name="gojo" type="TextureRect" parent="MarginContainer5/characters/gojo"]
+layout_mode = 0
+offset_left = 508.0
+offset_top = 155.0
+offset_right = 540.0
+offset_bottom = 187.0
+scale = Vector2(3, 3)
+texture = ExtResource("6_menxl")
+
+[node name="Label" type="Label" parent="MarginContainer5/characters/gojo"]
+layout_mode = 0
+offset_left = 508.0
+offset_top = 140.0
+offset_right = 604.0
+offset_bottom = 154.0
+theme_override_fonts/font = ExtResource("2_7078j")
+theme_override_font_sizes/font_size = 16
+text = "Gojo"
+horizontal_alignment = 1
+
+[node name="Button4" type="Button" parent="MarginContainer5/characters/gojo"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 508.0
+offset_top = 155.0
+offset_right = 604.0
+offset_bottom = 251.0
+text = "Gojo"
+
+[node name="tankman" type="Control" parent="MarginContainer5/characters"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="background" type="TextureRect" parent="MarginContainer5/characters/tankman"]
+layout_mode = 0
+offset_left = 508.0
+offset_top = 20.0
+offset_right = 540.0
+offset_bottom = 52.0
+scale = Vector2(3, 3)
+texture = ExtResource("7_c8r4x")
+
+[node name="tankman2" type="TextureRect" parent="MarginContainer5/characters/tankman"]
+layout_mode = 0
+offset_left = 508.0
+offset_top = 20.0
+offset_right = 540.0
+offset_bottom = 52.0
+scale = Vector2(3, 3)
+texture = ExtResource("12_gdknw")
+
+[node name="tankman" type="TextureRect" parent="MarginContainer5/characters/tankman"]
+layout_mode = 0
+offset_left = 508.0
+offset_top = 20.0
+offset_right = 540.0
+offset_bottom = 52.0
+scale = Vector2(3, 3)
+texture = ExtResource("6_menxl")
+
+[node name="Label" type="Label" parent="MarginContainer5/characters/tankman"]
+layout_mode = 0
+offset_left = 508.0
+offset_top = 5.0
+offset_right = 604.0
+offset_bottom = 19.0
+theme_override_fonts/font = ExtResource("2_7078j")
+theme_override_font_sizes/font_size = 16
+text = "Tankman"
+horizontal_alignment = 1
+
+[node name="Button3" type="Button" parent="MarginContainer5/characters/tankman"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 508.0
+offset_top = 20.0
+offset_right = 604.0
+offset_bottom = 117.0
+text = "Tankman"
+
+[node name="space_soldier" type="Control" parent="MarginContainer5/characters"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="background" type="TextureRect" parent="MarginContainer5/characters/space_soldier"]
+layout_mode = 0
+offset_left = 188.0
+offset_top = 155.0
+offset_right = 220.0
+offset_bottom = 187.0
+scale = Vector2(3, 3)
+texture = ExtResource("7_c8r4x")
+
+[node name="space_soldier2" type="TextureRect" parent="MarginContainer5/characters/space_soldier"]
+layout_mode = 0
+offset_left = 188.0
+offset_top = 155.0
+offset_right = 220.0
+offset_bottom = 187.0
+scale = Vector2(3, 3)
+texture = ExtResource("13_jjnfw")
+
+[node name="space_soldier" type="TextureRect" parent="MarginContainer5/characters/space_soldier"]
+layout_mode = 0
+offset_left = 188.0
+offset_top = 155.0
+offset_right = 220.0
+offset_bottom = 187.0
+scale = Vector2(3, 3)
+texture = ExtResource("6_menxl")
+
+[node name="Label" type="Label" parent="MarginContainer5/characters/space_soldier"]
+layout_mode = 0
+offset_left = 188.0
+offset_top = 140.0
+offset_right = 284.0
+offset_bottom = 154.0
+theme_override_fonts/font = ExtResource("2_7078j")
+theme_override_font_sizes/font_size = 16
+text = "Space Soldier"
+horizontal_alignment = 1
+
+[node name="Button2" type="Button" parent="MarginContainer5/characters/space_soldier"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 188.0
+offset_top = 155.0
+offset_right = 284.0
+offset_bottom = 251.0
+
+[node name="alien" type="Control" parent="MarginContainer5/characters"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="background" type="TextureRect" parent="MarginContainer5/characters/alien"]
+layout_mode = 0
+offset_left = 189.0
+offset_top = 20.0
+offset_right = 221.0
+offset_bottom = 52.0
+scale = Vector2(3, 3)
+texture = ExtResource("7_c8r4x")
+
+[node name="Alien2" type="TextureRect" parent="MarginContainer5/characters/alien"]
+layout_mode = 0
+offset_left = 189.0
+offset_top = 20.0
+offset_right = 221.0
+offset_bottom = 52.0
+scale = Vector2(3, 3)
+texture = ExtResource("14_pfr87")
+
+[node name="Alien" type="TextureRect" parent="MarginContainer5/characters/alien"]
+layout_mode = 0
+offset_left = 189.0
+offset_top = 20.0
+offset_right = 221.0
+offset_bottom = 52.0
+scale = Vector2(3, 3)
+texture = ExtResource("6_menxl")
+
+[node name="Label" type="Label" parent="MarginContainer5/characters/alien"]
+layout_mode = 0
+offset_left = 189.0
+offset_top = 5.0
+offset_right = 285.0
+offset_bottom = 19.0
+theme_override_fonts/font = ExtResource("2_7078j")
+theme_override_font_sizes/font_size = 16
+text = "Alien"
+horizontal_alignment = 1
+
+[node name="Button1" type="Button" parent="MarginContainer5/characters/alien"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 190.0
+offset_top = 20.0
+offset_right = 285.0
+offset_bottom = 116.0
+text = "Alien"
+
+[node name="button9" type="Control" parent="MarginContainer5/characters"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="background" type="TextureRect" parent="MarginContainer5/characters/button9"]
+modulate = Color(0.16, 0.16, 0.16, 1)
+layout_mode = 0
+offset_left = 827.0
+offset_top = 155.0
+offset_right = 859.0
+offset_bottom = 187.0
+scale = Vector2(3, 3)
+texture = ExtResource("7_c8r4x")
+
+[node name="background2" type="TextureRect" parent="MarginContainer5/characters/button9"]
+layout_mode = 0
+offset_left = 827.0
+offset_top = 155.0
+offset_right = 859.0
+offset_bottom = 187.0
+scale = Vector2(3, 3)
+texture = ExtResource("16_28v6c")
+
+[node name="background3" type="TextureRect" parent="MarginContainer5/characters/button9"]
+layout_mode = 0
+offset_left = 827.0
+offset_top = 155.0
+offset_right = 859.0
+offset_bottom = 187.0
+scale = Vector2(3, 3)
+texture = ExtResource("6_menxl")
+
+[node name="Label" type="Label" parent="MarginContainer5/characters/button9"]
+layout_mode = 0
+offset_left = 827.0
+offset_top = 140.0
+offset_right = 923.0
+offset_bottom = 154.0
+theme_override_fonts/font = ExtResource("2_7078j")
+theme_override_font_sizes/font_size = 16
+text = "Random"
+horizontal_alignment = 1
+
+[node name="Button9" type="Button" parent="MarginContainer5/characters/button9"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 827.0
+offset_top = 155.0
+offset_right = 923.0
+offset_bottom = 252.0
+
+[node name="character_image" type="Control" parent="MarginContainer5"]
+layout_mode = 2
+
+[node name="TextureRect3" type="TextureRect" parent="MarginContainer5/character_image"]
+visible = false
+layout_mode = 0
+offset_left = 860.0
+offset_top = 340.0
+offset_right = 900.0
+offset_bottom = 380.0
+scale = Vector2(5, 5)
+texture = ExtResource("16_v5gqr")
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer5/character_image"]
+layout_mode = 0
+offset_left = 860.0
+offset_top = 340.0
+offset_right = 900.0
+offset_bottom = 380.0
+scale = Vector2(5, 5)
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer5/character_image"]
+layout_mode = 0
+offset_left = 860.0
+offset_top = 340.0
+offset_right = 1060.0
+offset_bottom = 540.0
+color = Color(1, 1, 1, 0)
+
+[node name="TextureRect2" type="TextureRect" parent="MarginContainer5/character_image"]
+layout_mode = 0
+offset_left = 860.0
+offset_top = 340.0
+offset_right = 900.0
+offset_bottom = 380.0
+scale = Vector2(5, 5)
+texture = ExtResource("6_menxl")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MarginContainer5/character_image"]
+libraries = {
+"": SubResource("AnimationLibrary_0e6oq")
+}
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="MarginContainer5"]
+stream = ExtResource("7_3u7yx")
+volume_db = 12.0
+
+[node name="AudioStreamPlayer2D2" type="AudioStreamPlayer2D" parent="MarginContainer5"]
+stream = ExtResource("8_r2w16")
+volume_db = 12.0
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer2"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="log" type="TextEdit" parent="CanvasLayer2/Control"]
+layout_mode = 0
+offset_right = 232.0
+offset_bottom = 128.0
+focus_mode = 0
+theme_override_fonts/font = ExtResource("2_7078j")
+theme_override_styles/normal = SubResource("StyleBoxFlat_ys02p")
+editable = false
+context_menu_enabled = false
+shortcut_keys_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+virtual_keyboard_enabled = false
+middle_mouse_paste_enabled = false
+
+[node name="menu_button" type="Button" parent="CanvasLayer2/Control"]
+layout_mode = 0
+offset_top = 128.0
+offset_right = 128.0
+offset_bottom = 192.0
+focus_mode = 0
+theme_override_fonts/font = ExtResource("2_7078j")
+theme_override_font_sizes/font_size = 32
+text = "Menu"
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 754.0
+offset_top = 231.0
+offset_right = 882.0
+offset_bottom = 381.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="host" type="Button" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+focus_mode = 0
+theme_override_fonts/font = ExtResource("2_7078j")
+theme_override_styles/hover = SubResource("StyleBoxTexture_np8q4")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_kboxc")
+theme_override_styles/normal = SubResource("StyleBoxTexture_8geyf")
+
+[node name="join" type="Button" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+focus_mode = 0
+theme_override_fonts/font = ExtResource("2_7078j")
+theme_override_styles/hover = SubResource("StyleBoxTexture_f5c0n")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_h02p0")
+theme_override_styles/normal = SubResource("StyleBoxTexture_5io3h")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="MarginContainer/VBoxContainer"]
+position = Vector2(-148, 40)
+stream = ExtResource("12_buk7h")
+autoplay = true
+
+[node name="MarginContainer2" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 230.0
+offset_top = 231.0
+offset_right = 358.0
+offset_bottom = 381.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="LineEdit" type="LineEdit" parent="MarginContainer2/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+focus_mode = 1
+theme_override_fonts/font = ExtResource("2_7078j")
+theme_override_styles/focus = SubResource("StyleBoxTexture_64s6y")
+theme_override_styles/normal = SubResource("StyleBoxTexture_q7h6x")
+placeholder_text = "Insert name here"
+alignment = 1
+max_length = 16
+
+[node name="address_entry" type="LineEdit" parent="MarginContainer2/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+focus_mode = 1
+theme_override_fonts/font = ExtResource("2_7078j")
+theme_override_styles/focus = SubResource("StyleBoxTexture_hq0tc")
+theme_override_styles/normal = SubResource("StyleBoxTexture_cueyo")
+placeholder_text = "Enter IP adress"
+alignment = 1
+max_length = 16
+
+[node name="MarginContainer3" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 400.5
+offset_top = 115.0
+offset_right = 711.5
+offset_bottom = 282.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer3"]
+layout_mode = 2
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="Label" type="Label" parent="MarginContainer3/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("2_7078j")
+theme_override_font_sizes/font_size = 75
+theme_override_styles/normal = SubResource("StyleBoxFlat_6vwy2")
+text = "BYTE GUNS"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="MarginContainer3/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_7078j")
+theme_override_font_sizes/font_size = 25
+text = "Select a map (Host)"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="OptionButton" type="OptionButton" parent="MarginContainer3/VBoxContainer/Label2"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+anchor_right = 1.0
+anchor_bottom = 9.045
+offset_left = 91.5
+offset_top = 39.0
+offset_right = -91.5
+offset_bottom = -109.99
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 0
+theme = SubResource("Theme_a4jbu")
+theme_override_fonts/font = ExtResource("2_7078j")
+theme_override_styles/focus = SubResource("StyleBoxTexture_bmrna")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_yyl2o")
+theme_override_styles/hover = SubResource("StyleBoxTexture_w86gv")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_djdhv")
+theme_override_styles/normal = SubResource("StyleBoxTexture_f1gl1")
+theme_override_icons/arrow = SubResource("ImageTexture_07ghj")
+alignment = 1
+script = ExtResource("2_ad8g6")
+
+[node name="MarginContainer6" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 492.0
+offset_top = 452.0
+offset_right = 621.0
+offset_bottom = 504.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Character" type="Button" parent="MarginContainer6"]
+layout_mode = 2
+focus_mode = 0
+theme_override_fonts/font = ExtResource("2_7078j")
+theme_override_styles/hover = SubResource("StyleBoxTexture_p11p4")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_vipqt")
+theme_override_styles/normal = SubResource("StyleBoxTexture_605of")
+text = "Character select"
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_2rrmy")
+
+[node name="Timer" type="Timer" parent="."]
+process_callback = 0
+wait_time = 3.0
+
+[node name="MarginContainer7" type="MarginContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 180.0
+offset_top = 54.0
+offset_right = 932.0
+offset_bottom = 554.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer7"]
+layout_mode = 2
+
+[node name="credits" type="TextEdit" parent="MarginContainer7/VBoxContainer"]
+custom_minimum_size = Vector2(752, 500)
+layout_mode = 2
+focus_mode = 0
+mouse_filter = 2
+theme_override_fonts/font = ExtResource("2_7078j")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_fhmww")
+text = "
+                                Credits
+
+General director
+AWSD
+
+Programming
+AWSD
+
+Characters
+AWSD
+
+Design
+AWSD
+AROL
+
+Sound & Music
+AWSD
+AROL
+
+Thank you for playing the game!"
+editable = false
+context_menu_enabled = false
+shortcut_keys_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+virtual_keyboard_enabled = false
+middle_mouse_paste_enabled = false
+
+[node name="MarginContainer9" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 528.0
+offset_right = 1112.0
+offset_bottom = 608.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer9"]
+material = SubResource("ShaderMaterial_fjw2v")
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Label4" type="Label" parent="MarginContainer9"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_7078j")
+theme_override_font_sizes/font_size = 20
+text = "Characters © GAINAX / Shonen Jump / Newgrounds / Marvel Entertainment
+All characters belong to their respective owners.
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer8" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(129, 52)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 24.0
+offset_top = 116.0
+offset_right = 153.0
+offset_bottom = 168.0
+grow_vertical = 2
+
+[node name="back" type="Button" parent="MarginContainer8"]
+visible = false
+layout_mode = 2
+focus_mode = 0
+theme_override_fonts/font = ExtResource("2_7078j")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/hover = SubResource("StyleBoxTexture_a3pm1")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_m6fxg")
+theme_override_styles/normal = SubResource("StyleBoxTexture_goo8o")
+text = "Back"
+
+[node name="MarginContainer10" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(129, 52)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 960.0
+offset_top = 544.0
+offset_right = 1089.0
+offset_bottom = 596.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="credits" type="Button" parent="MarginContainer10"]
+layout_mode = 2
+focus_mode = 0
+theme_override_fonts/font = ExtResource("2_7078j")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/hover = SubResource("StyleBoxTexture_clej5")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_ja8dg")
+theme_override_styles/normal = SubResource("StyleBoxTexture_6g1sn")
+text = "Credits"
+
+[connection signal="pressed" from="MarginContainer5/characters/toji/Button7" to="." method="_on_button_7_pressed"]
+[connection signal="pressed" from="MarginContainer5/characters/asuka/Button6" to="." method="_on_button_6_pressed"]
+[connection signal="pressed" from="MarginContainer5/characters/deadpool/Button5" to="." method="_on_button_5_pressed"]
+[connection signal="pressed" from="MarginContainer5/characters/gojo/Button4" to="." method="_on_button_4_pressed"]
+[connection signal="pressed" from="MarginContainer5/characters/tankman/Button3" to="." method="_on_button_3_pressed"]
+[connection signal="pressed" from="MarginContainer5/characters/space_soldier/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="focus_entered" from="MarginContainer5/characters/alien/Button1" to="." method="_on_button_focus_entered"]
+[connection signal="pressed" from="MarginContainer5/characters/alien/Button1" to="." method="_on_button_1_pressed"]
+[connection signal="pressed" from="MarginContainer5/characters/button9/Button9" to="." method="_on_button_9_pressed"]
+[connection signal="pressed" from="CanvasLayer2/Control/menu_button" to="." method="_on_menu_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/host" to="." method="_on_host_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/join" to="." method="_on_join_pressed"]
+[connection signal="finished" from="MarginContainer/VBoxContainer/AudioStreamPlayer2D" to="." method="_on_audio_stream_player_2d_finished"]
+[connection signal="pressed" from="MarginContainer6/Character" to="." method="_on_character_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="pressed" from="MarginContainer8/back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="MarginContainer10/credits" to="." method="_on_credits_pressed"]

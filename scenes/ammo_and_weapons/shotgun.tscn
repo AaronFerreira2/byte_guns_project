@@ -1,0 +1,47 @@
+[gd_scene load_steps=5 format=3 uid="uid://cjhvohmmfuteu"]
+
+[ext_resource type="Script" path="res://scripts/ammo_and_weapons/shotgun.gd" id="1_8tpye"]
+[ext_resource type="Texture2D" uid="uid://n1w02gqchphn" path="res://assets/sprites/weapons/Shotgun.png" id="2_36jgy"]
+[ext_resource type="AudioStream" uid="uid://dx7guxe46knqw" path="res://assets/sounds/shoot.wav" id="3_1x657"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_kf43w"]
+properties/0/path = NodePath(".:visible")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath("Sprite2D:flip_h")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath("Sprite2D:flip_v")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+properties/3/path = NodePath(".:position")
+properties/3/spawn = true
+properties/3/replication_mode = 1
+properties/4/path = NodePath(".:rotation")
+properties/4/spawn = true
+properties/4/replication_mode = 1
+properties/5/path = NodePath("shoot:playing")
+properties/5/spawn = true
+properties/5/replication_mode = 2
+
+[node name="Shotgun" type="Node2D"]
+script = ExtResource("1_8tpye")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(5, 5)
+texture = ExtResource("2_36jgy")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(21, -2)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_kf43w")
+
+[node name="shoot" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_1x657")
+pitch_scale = 1.5
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
